@@ -4,7 +4,6 @@ package com.amigoscode._2_developers._3_packages;
 //  in the useListFromUtil() method below.
 import java.util.List;
 import  java.util.ArrayList;
-import java.util.Scanner;
 import static  java.lang.Math.PI;
 
 
@@ -15,7 +14,6 @@ import java.time.LocalDate;
 
 /**
  * Package and Import Exercises
- *
  * Practice importing classes from java.util and java.time, using fully qualified
  * class names, importing static members, and referencing classes from other packages.
  */
