@@ -11,28 +11,48 @@ public class MethodOverloading {
 
     // TODO: 1 - Create a method: int add(int a, int b)
     //  Returns the sum of two integers.
+    private static int add(int a, int b) {
+        return a + b;
+    }
 
 
     // TODO: 2 - Create an overloaded method: int add(int a, int b, int c)
     //  Returns the sum of three integers.
 
+    private static int add(int a, int b, int c) {
+        return a + b + c;
+    }
+
 
     // TODO: 3 - Create an overloaded method: double add(double a, double b)
     //  Returns the sum of two doubles.
+    private static double add(double a, double b) {
+        return a + b;
+    }
 
 
     // TODO: 4 - Create a method: String format(String value)
     //  Returns the string wrapped in square brackets, e.g., "[hello]".
+    private static String format(String value){
+        return "["+ value + "]";
+    }
 
 
     // TODO: 5 - Create an overloaded method: String format(int value)
     //  Returns the integer formatted with leading zeros to 5 digits.
     //  Example: format(42) returns "00042".
     //  Hint: use String.format("%05d", value)
+    private static String format(int value ) {
+        return String.format("%05d",  value);
+    }
 
 
     // TODO: 6 - Create an overloaded method: String format(String label, int value)
     //  Returns "label: value", e.g., format("Score", 95) returns "Score: 95".
+
+    private static String format(String label, int  value) {
+        return  label + ": " + value  ;
+    }
 
 
     public static void main(String[] args) {
@@ -46,6 +66,15 @@ public class MethodOverloading {
         //  - format(42)
         //  - format("Score", 95)
         //  Print each result with a descriptive label.
+
+
+        System.out.println("Sum of 2 and 3: "  + add(2,3));
+        System.out.println("Sum of 2 and 3 and 4: "  +add(2,3,4));
+        System.out.println("value of format string: " +format("Hello"));
+        System.out.println("value of format int: "+format(42));
+        System.out.println("value of format overloaded string and int: " + format("Score",95));
+
+
 
     }
 }

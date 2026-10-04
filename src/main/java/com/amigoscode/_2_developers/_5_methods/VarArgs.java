@@ -14,6 +14,7 @@ public class VarArgs {
     //  Hint: use a for-each loop to iterate over 'numbers'.
 
 
+
     // TODO: 2 - Create a method: String concatenate(String... strings)
     //  Joins all strings with a single space between them.
     //  Example: concatenate("Hello", "World") returns "Hello World"
