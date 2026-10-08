@@ -20,12 +20,14 @@ public class StringBuilderExercises {
         // TODO: 1 - Create a new StringBuilder.
         //  Append "Hello, ", then name, then "! You are ", then age, then " years old."
         //  Convert to String and return.
-        return null;
+        StringBuilder greeting = new StringBuilder();
+        greeting.append("Hello, ").append(name).append("! You are ").append(age).append(" years old.");
+        return greeting.toString();
     }
 
     /**
      * Inserts a middle name into a full name at the correct position.
-     * Given "John Smith" and middle name "Michael", returns "John Michael Smith".
+     * Given "John Smith    " and middle name "Michael", returns "John Michael Smith".
      *
      * @param fullName   the full name with first and last name
      * @param middleName the middle name to insert
@@ -36,7 +38,11 @@ public class StringBuilderExercises {
         //  Find the index of the first space using indexOf(" ").
         //  Insert middleName + " " at position (spaceIndex + 1).
         //  Convert to String and return.
-        return null;
+        StringBuilder name = new StringBuilder(fullName);
+        int index = fullName.indexOf(" ");
+        name.insert(index + 1, middleName + " " );
+
+        return name.toString();
     }
 
     /**
@@ -51,7 +57,17 @@ public class StringBuilderExercises {
         //  Use deleteCharAt(i) to remove characters that are vowels.
         //  Hint: check if "aeiouAEIOU".indexOf(ch) >= 0
         //  Convert to String and return.
-        return null;
+        StringBuilder vowels = new StringBuilder(text);
+        char ch ;
+        for (int i = vowels.length() - 1; i >=0; i--) {
+            ch = vowels.charAt(i);
+             if (  "aeiouAEIOU".indexOf(ch) >= 0 ){
+                 vowels.deleteCharAt(i);
+             }
+
+                }
+
+        return vowels.toString();
     }
 
     /**
@@ -62,7 +78,8 @@ public class StringBuilderExercises {
      */
     public static String reverseText(String text) {
         // TODO: 4 - Create a StringBuilder from text, call reverse(), convert to String.
-        return null;
+        StringBuilder reverseText = new StringBuilder(text);
+        return reverseText.reverse().toString();
     }
 
     /**
@@ -78,7 +95,12 @@ public class StringBuilderExercises {
         //  Call toUpperCase() on that String (String method, not StringBuilder).
         //  Create a new StringBuilder from the uppercased String, append "!!!"
         //  Return the final String.
-        return null;
+        StringBuilder convertedText = new StringBuilder(text);
+       String upperCase =  convertedText.toString().toUpperCase();
+        StringBuilder upperCaseText = new StringBuilder(upperCase);
+        upperCaseText.append("!!!");
+
+        return upperCaseText.toString();
     }
 
     /**
@@ -94,7 +116,13 @@ public class StringBuilderExercises {
         //  Append each value, and append a comma between values (but NOT after the last one).
         //  Hint: you can check if it's not the last element, or use deleteCharAt at the end.
         //  Return the result as a String.
-        return null;
+        StringBuilder line = new StringBuilder();
+        for (String value : values) {
+            line.append(value+",");
+        }line.deleteCharAt(line.length()-1);
+
+
+        return line.toString();
     }
 
     public static void main(String[] args) {
