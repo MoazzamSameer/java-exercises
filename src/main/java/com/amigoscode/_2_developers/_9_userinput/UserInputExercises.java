@@ -39,6 +39,7 @@ public class UserInputExercises {
         //  Don't forget to consume the leftover newline with scanner.nextLine()
         //  after reading the int (both in success and failure cases).
         System.out.print("Enter a number: ");
+
         try {
             int number = scanner.nextInt();
             scanner.nextLine();
