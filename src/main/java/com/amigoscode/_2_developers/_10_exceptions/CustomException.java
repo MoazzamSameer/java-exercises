@@ -18,6 +18,7 @@ public class CustomException {
     //  Define it as a static inner class here, or as a separate class in this package.
 
 
+
     // TODO: 2 - Create a custom UNCHECKED exception class called InvalidAgeException.
     //  It should:
     //  - Extend RuntimeException (making it an unchecked exception)
@@ -37,9 +38,17 @@ public class CustomException {
     //  - A method: double getBalance()
 
 
+
     // TODO: 4 - Create a static method: void validateAge(int age)
     //  If age < 0 or age > 150, throw a new InvalidAgeException with an appropriate message.
     //  Otherwise, print "Age " + age + " is valid."
+    static void validateAge(int age) {
+        if (age < 0 || age > 150) {
+            throw new InvalidAgeException("Invalid age");
+        }else  {
+            System.out.println("Age " + age + " is valid");
+        }
+    }
 
 
     public static void main(String[] args) {
@@ -50,7 +59,24 @@ public class CustomException {
         //  Catch the exception and print its message and the shortage amount.
         //  Also try validateAge with valid (25) and invalid (-5) values,
         //  catching InvalidAgeException.
+        BankAccount m_sameer = new BankAccount(100);
+       try{ m_sameer.withdraw(50);}
+       catch (InsufficientFundsException e){
+           System.out.println(e.getMessage()+" "+ e.getAmount());
+       }
+        System.out.println(m_sameer.getBalance());
+       try {
+           m_sameer.withdraw(75);
+       }catch (InsufficientFundsException e){
+           System.out.println(e.getMessage()+" " +e.getAmount());
+       }
+       try {
 
+           validateAge(25);
+           validateAge(-5);
+       }catch (InvalidAgeException e){
+           System.out.println(e.getMessage());
+       }
 
         System.out.println("\n=== Exception Chaining ===");
         // TODO: 6 - Demonstrate exception chaining:
@@ -61,6 +87,14 @@ public class CustomException {
         //  In an outer try-catch, catch the InvalidAgeException and print:
         //  - The exception message
         //  - The cause (using getCause())
-
+        try {
+            try {
+                int abc = Integer.parseInt("abc");
+            } catch (NumberFormatException e) {
+                throw new InvalidAgeException("Invalid age",e);
+            }
+        } catch (InvalidAgeException e) {
+            System.out.println(e.getMessage()+" "+e.getCause());
+        }
     }
 }
