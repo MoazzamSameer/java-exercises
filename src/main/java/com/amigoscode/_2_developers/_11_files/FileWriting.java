@@ -1,10 +1,9 @@
 package com.amigoscode._2_developers._11_files;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
 
@@ -28,6 +27,8 @@ public class FileWriting {
         // TODO: 1 - Use Files.writeString(Path.of(filePath), content) to write the content.
         //  This creates the file if it doesn't exist, or overwrites it if it does.
 
+       Files.writeString(Path.of(filePath),content);
+
     }
 
     /**
@@ -42,6 +43,8 @@ public class FileWriting {
         //  Add a newline ("\n") before the text so it appears on a new line.
         //  Example: Files.writeString(Path.of(filePath), "\n" + text, StandardOpenOption.APPEND);
 
+        Files.writeString(Path.of(filePath),"\n"+text , StandardOpenOption.APPEND);
+
     }
 
     /**
@@ -54,6 +57,7 @@ public class FileWriting {
     public static void writeLines(String filePath, List<String> lines) throws IOException {
         // TODO: 3 - Use Files.write(Path.of(filePath), lines) to write all lines.
         //  Each string in the list becomes one line in the file.
+        Files.write(Path.of(filePath),lines);
 
     }
 
@@ -74,6 +78,14 @@ public class FileWriting {
         //      writer.write("Line 3");
         //  }
 
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(filePath));){
+            bw.write("Line 1");
+            bw.newLine();
+            bw.write("Line 2");
+            bw.newLine();
+            bw.write("Line 3");
+        }
+
     }
 
     /**
@@ -90,7 +102,10 @@ public class FileWriting {
         //  Note: Files.copy will throw if destination already exists unless you add
         //  StandardCopyOption.REPLACE_EXISTING.
 
+        Files.copy(Path.of(sourcePath), Path.of(destinationPath), StandardCopyOption.REPLACE_EXISTING);
+
     }
+
 
     /**
      * Writes formatted CSV data to a file.
@@ -106,6 +121,18 @@ public class FileWriting {
         //  Then, for each row, write the values joined by commas, followed by a newline.
         //  Use StringBuilder or String.join(",", array) to build each line.
         //  Write the complete result using Files.writeString().
+       StringBuilder stringBuilder = new StringBuilder();
+       stringBuilder = new StringBuilder(String.join(",", headers));
+        stringBuilder.append("\n");
+
+            for (String[] row : rows){
+                stringBuilder.append(String.join(",", row));
+                stringBuilder.append("\n");
+            }
+
+
+
+        Files.writeString(Path.of(filePath),stringBuilder.toString());
 
     }
 
